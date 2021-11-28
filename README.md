@@ -1,6 +1,6 @@
-# twitter_clone
+# SIMPLE-TWITTER-APP
 
-Twitter Clone
+SIMPLE TWITTER APP
 
 ## Getting Started
 
