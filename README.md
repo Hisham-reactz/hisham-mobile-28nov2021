@@ -52,5 +52,5 @@ Run the app
 
 ## Screen Flow
 
-![App Screenshot](https://i.ibb.co/nMQj4Sm/wireflow.jpg)
+![App Screenshot](https://i.ibb.co/wCf0k5p/wireflow-1.jpg)
 
