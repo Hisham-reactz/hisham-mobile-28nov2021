@@ -1,17 +1,55 @@
-# twitter_clone
 
-Twitter Clone
+# Simple Twitter App
 
-## Getting Started
+Simple Twitter App using flutter , firestrore & firebase auth.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Run Locally
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# hisham-mobile-28nov2021
+Clone the project
+
+```bash
+  git clone https://github.com/Hisham-reactz/hisham-mobile-28nov2021.git
+```
+
+Go to the project directory
+
+```bash
+  cd hisham-mobile-28nov2021
+```
+
+Install dependencies
+
+```bash
+  flutter packages get
+```
+
+Run the app
+
+```bash
+  flutter run
+```
+
+
+## Features
+
+- Firebase auth email/password login.
+- Tweets listing. 
+- Add Tweet.
+- Delete Tweet.
+- Edit Tweet.
+- Logout
+
+
+## Tech Stack
+
+**Client:** Flutter , GetX
+
+**Server:** Firebase
+
+
+## Screen Flow
+
+![App Screenshot](https://i.ibb.co/nMQj4Sm/wireflow.jpg)
+
