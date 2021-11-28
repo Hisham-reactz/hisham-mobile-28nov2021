@@ -35,7 +35,7 @@ Run the app
 
 ## Features
 
-- Firebase auth email/password login.
+- Firebase auth email/password login ([email:hsmdev/ryyan@gmail.com,password:asddsa]).
 - Tweets listing. 
 - Add Tweet.
 - Delete Tweet.
