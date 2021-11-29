@@ -57,11 +57,17 @@ class FirebaseService extends GetxService {
         .catchError((error) => util.snack('Something went wrong'));
   }
 
+  //Get tweet user
   getUser(data) {
     return users!
         .where('user_id', isEqualTo: data['user_id'])
         .get()
         .then((value) => value.docs.first);
+  }
+
+  //Create new user entry on login with firebase user id
+  addUser(data) {
+    return users!.add(data).then((value) => {}).catchError((error) => {});
   }
 
   //Firebase Email Login
@@ -71,7 +77,9 @@ class FirebaseService extends GetxService {
       //Firebase login attempt with given email & pass
       UserCredential userCredential = await auth!
           .signInWithEmailAndPassword(email: email!, password: password!);
-
+      var name = email.split('@');
+      //create/copy user to firestore
+      addUser({'name': name[0], 'user_id': userCredential.user!.uid});
       util.snack('Logged In');
       //Local storage basic data set
       pref.setString('userId', userCredential.user!.uid);
