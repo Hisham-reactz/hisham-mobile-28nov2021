@@ -21,6 +21,8 @@ class FirebaseService extends GetxService {
 
   //Logout
   void logOut() async {
+    final SharedPreferences pref = await prefs;
+    pref.clear();
     await auth!.signOut();
     Get.rootDelegate.offAndToNamed(Routes.login);
   }
