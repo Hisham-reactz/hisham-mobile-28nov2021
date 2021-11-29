@@ -67,7 +67,10 @@ class FirebaseService extends GetxService {
 
   //Create new user entry on login with firebase user id
   addUser(data) {
-    return users!.add(data).then((value) => {}).catchError((error) => {});
+    users!.where('user_id', isEqualTo: data['user_id']).get().then((value) => {
+          if (value.docs.isEmpty)
+            {users!.add(data).then((value) => {}).catchError((error) => {})}
+        });
   }
 
   //Firebase Email Login
