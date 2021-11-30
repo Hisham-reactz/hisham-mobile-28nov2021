@@ -24,45 +24,77 @@ void main() async {
   final firestore = FakeFirebaseFirestore();
   String? tweet;
   test('Given user MockUser try firebase email login', () async {
+    //Arrange
     final auth = MockFirebaseAuth(mockUser: user);
+    //Act
     final result = await auth.signInWithCredential(credential);
-    print(result.user!.displayName);
+    //Assert
+    expect(result.user!.displayName, 'Bob');
   });
 
   test('Given user MockUser try AddUser to firestore', () async {
+    //Arrange
     await firestore
         .collection('users')
         .add({'user_id': user.uid, 'name': user.displayName});
-    await firestore.collection('users').get();
-    print(firestore.dump());
+    //Act
+    final users = await firestore.collection('users').get();
+    //Assert
+    expect(users.docs.length, 1);
   });
 
   test('Given user MockUser try addTweet to firestore', () async {
-    await firestore.collection('tweets').add({
+    //Arrange
+    final tweetData = {
       'content': mockTweet.content,
       'createdAt': mockTweet.createdAt,
       'userId': user.uid
-    }).then((value) => tweet = value.id);
-    print(firestore.dump());
+    };
+    //Act
+    await firestore
+        .collection('tweets')
+        .add(tweetData)
+        .then((value) => tweet = value.id);
+    //Assert
+    expect(tweet, isNotNull);
   });
 
   test('Given user MockUser try getTweets from firestore', () async {
-    await firestore
+    //Arrange
+    final userId = user.uid;
+    //Act
+    final allTweets = await firestore
         .collection('tweets')
-        .where('user_id', isEqualTo: user.uid)
-        .orderBy('created_at', descending: true)
+        .where('userId', isEqualTo: userId)
+        .orderBy('createdAt', descending: true)
         .get();
-    print(firestore.dump());
+    //Assert
+    expect(allTweets.docs.length, 1);
   });
 
   test('Given user MockUser try editTweet from firestore', () async {
-    await firestore.collection('tweets').doc(tweet).update({
+    //Arrange
+    final tweetId = tweet;
+    //Act
+    await firestore.collection('tweets').doc(tweetId).update({
       'content': mockTweet.content + '  edit',
     });
-    print(firestore.dump());
+    //Assert
+    final editedTweet = await firestore.collection('tweets').doc(tweetId).get();
+    expect(editedTweet.data()!['content'], mockTweet.content + '  edit');
   });
+
   test('Given user MockUser try deleteTweet from firestore', () async {
-    await firestore.collection('tweets').doc(tweet).delete();
+    //Arrange
+    final tweetId = tweet;
+    //Act
+    await firestore.collection('tweets').doc(tweetId).delete();
+    //Assert
+    final allTweets = await firestore
+        .collection('tweets')
+        .where('userId', isEqualTo: user.uid)
+        .orderBy('createdAt', descending: true)
+        .get();
+    expect(allTweets.docs.length, 0);
   });
-  print(firestore.dump());
 }
