@@ -34,10 +34,9 @@ void main() async {
 
   test('Given user MockUser try AddUser to firestore', () async {
     //Arrange
-    await firestore
-        .collection('users')
-        .add({'user_id': user.uid, 'name': user.displayName});
+    final user1 = {'user_id': user.uid, 'name': user.displayName};
     //Act
+    await firestore.collection('users').add(user1);
     final users = await firestore.collection('users').get();
     //Assert
     expect(users.docs.length, 1);
@@ -75,12 +74,13 @@ void main() async {
   test('Given user MockUser try editTweet from firestore', () async {
     //Arrange
     final tweetId = tweet;
-    //Act
-    await firestore.collection('tweets').doc(tweetId).update({
+    final tweetData = {
       'content': mockTweet.content + '  edit',
-    });
-    //Assert
+    };
+    //Act
+    await firestore.collection('tweets').doc(tweetId).update(tweetData);
     final editedTweet = await firestore.collection('tweets').doc(tweetId).get();
+    //Assert
     expect(editedTweet.data()!['content'], mockTweet.content + '  edit');
   });
 
@@ -89,12 +89,12 @@ void main() async {
     final tweetId = tweet;
     //Act
     await firestore.collection('tweets').doc(tweetId).delete();
-    //Assert
     final allTweets = await firestore
         .collection('tweets')
         .where('userId', isEqualTo: user.uid)
         .orderBy('createdAt', descending: true)
         .get();
+    //Assert
     expect(allTweets.docs.length, 0);
   });
 }
