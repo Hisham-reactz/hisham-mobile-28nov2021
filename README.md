@@ -50,6 +50,13 @@ Run the app
 **Server:** Firebase
 
 
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  flutter test
+```
 ## Screen Flow
 
 ![App Screenshot](https://i.ibb.co/wCf0k5p/wireflow-1.jpg)
