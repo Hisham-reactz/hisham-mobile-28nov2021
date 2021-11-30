@@ -56,6 +56,7 @@ class LoginView extends GetView<LoginController> {
             padding: EdgeInsets.only(top: height(20), right: width(30)),
             child: Align(
               child: ElevatedButton(
+                  key: const ValueKey('LoginButton'),
                   style: buttonStyle,
                   onPressed: () async => controller.submitForm(context),
                   child: Obx(() => Visibility(

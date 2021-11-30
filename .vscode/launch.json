@@ -1,0 +1,18 @@
+{
+    "configurations": [
+    
+        {
+            "name": "Flutter",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+
+        {
+            "name": "Integration Test",
+            "program": "test_driver/app.dart",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
