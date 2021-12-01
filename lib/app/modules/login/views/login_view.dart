@@ -39,6 +39,7 @@ class LoginView extends GetView<LoginController> {
         Padding(
             padding: EdgeInsets.only(left: width(30), right: width(30)),
             child: TextFormField(
+              key: const ValueKey('emailInput'),
               validator: (val) => controller.validate(val, 'Email'),
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(labelText: 'Email'),
@@ -47,6 +48,7 @@ class LoginView extends GetView<LoginController> {
             padding: EdgeInsets.only(
                 top: height(20), left: width(30), right: width(30)),
             child: TextFormField(
+              key: const ValueKey('passwordInput'),
               validator: (val) => controller.validate(val, 'Password'),
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
@@ -56,7 +58,7 @@ class LoginView extends GetView<LoginController> {
             padding: EdgeInsets.only(top: height(20), right: width(30)),
             child: Align(
               child: ElevatedButton(
-                  key: const ValueKey('LoginButton'),
+                  key: const ValueKey('loginButton'),
                   style: buttonStyle,
                   onPressed: () async => controller.submitForm(context),
                   child: Obx(() => Visibility(

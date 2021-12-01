@@ -46,6 +46,7 @@ Visibility footerButtons(controller, document, data) {
               child: Visibility(
                   visible: controller.userId == data['user_id'],
                   child: TextButton.icon(
+                      key: const ValueKey('editTweetButton'),
                       style: ButtonStyle(
                           padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       onPressed: () =>

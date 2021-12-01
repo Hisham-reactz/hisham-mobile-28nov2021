@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('description', () {
-    final button = dvr.find.byValueKey('LoginButton');
+    final button = dvr.find.byValueKey('loginButton');
     dvr.FlutterDriver? driver;
 
     setUpAll(() async {

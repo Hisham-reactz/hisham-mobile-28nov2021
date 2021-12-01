@@ -27,6 +27,7 @@ class TweetView extends GetView<TweetController> {
                             TextStyle(color: Colors.lightBlue, fontSize: 17))),
                 SizedBox(width: width(100)),
                 ElevatedButton(
+                    key: const ValueKey('addTweetButton'),
                     style: ButtonStyle(
                         alignment: Alignment.center,
                         backgroundColor:
@@ -72,6 +73,7 @@ class TweetView extends GetView<TweetController> {
     return Form(
         key: controller.formKey,
         child: TextFormField(
+          key: const ValueKey('addTweetInput'),
           initialValue: controller.tweet.value,
           keyboardType: TextInputType.multiline,
           textInputAction: TextInputAction.newline,

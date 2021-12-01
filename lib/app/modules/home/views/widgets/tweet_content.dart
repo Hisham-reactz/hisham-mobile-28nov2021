@@ -18,6 +18,7 @@ Column tweetContent(height, context, controller, document, data) {
         replacement: Align(
             alignment: Alignment.centerLeft,
             child: TextFormField(
+              key: const ValueKey('editTweetInput'),
               textInputAction: TextInputAction.send,
               onChanged: (val) => controller.setEdit(document.reference, val),
               initialValue: data['content'],

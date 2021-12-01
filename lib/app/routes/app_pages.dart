@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:twitter_clone/app/modules/home/views/home_view.dart';
 import 'package:twitter_clone/app/modules/login/bindings/login_bindings.dart';
@@ -23,17 +24,19 @@ class AppPages {
       children: [
         GetPage(
           name: _Paths.home,
-          page: () => const HomeView(),
+          page: () => const HomeView(
+            key: Key('HomeView'),
+          ),
           binding: HomeBinding(),
         ),
         GetPage(
           name: _Paths.tweet,
-          page: () => const TweetView(),
+          page: () => const TweetView(key: Key('TweetView')),
           binding: TweetBinding(),
         ),
         GetPage(
           name: _Paths.login,
-          page: () => const LoginView(),
+          page: () => const LoginView(key: Key('LoginView')),
           binding: LoginBinding(),
         ),
       ],
